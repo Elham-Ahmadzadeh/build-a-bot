@@ -76,7 +76,7 @@
 </template>
 <script>
 import availableParts from '../data/parts'
-
+import createdHookMixin from './created-hook-mixin'
 function getPreviousValidIndex (index, length) {
   const deprecatedIndex = index - 1
   return deprecatedIndex < 0 ? length - 1 : deprecatedIndex
@@ -89,6 +89,10 @@ function getNextValidIndex (index, length) {
 
 export default {
 	name: 'RobotBuilder',
+	// explore component lifecycle hooks
+	/* created () {
+		console.log('created')
+	}, */
 	computed: {
 		saleBorderClass () {
 			return this.selectedRobot.head.onSale
@@ -112,6 +116,7 @@ export default {
 			}
 		}
 	},
+
 	data () {
 		return {
 			availableParts,
@@ -123,6 +128,7 @@ export default {
 			selectedBaseIndex: 0
 		}
 	},
+	mixins: [createdHookMixin],
 	methods: {
 		addToCart () {
 			const robot = this.selectedRobot
@@ -173,7 +179,8 @@ export default {
 	}
 }
 </script>
-<style  scoped>
+
+<style lang="scss" scoped>
 
 .part {
   position: relative;
@@ -182,9 +189,11 @@ export default {
   border: 3px solid #aaa;
 }
 
-	img {
+.part {
+		img {
   		width:165px;
 	}
+}
 
 .top-row {
   display:flex;
