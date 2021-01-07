@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+	"lint:fix": "npm run lint -- --fix",
+	"start": "vue-cli-scripts start",
+	"test": "vue-cli-scripts test",
+	"eject": "vue-cli-scripts eject",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "eslint --fix --ext .js,.jsx ."
+	"lint": "eslint --fix --ext .js,.jsx ."
+
   },
   "dependencies": {
     "core-js": "^3.6.5",
