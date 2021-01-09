@@ -1,19 +1,27 @@
+<!-- * making the nav links active use active class in css  -->
+
+
 <template>
+<!--  -->
 <div id="app">
   <header>
     <nav>
       <ul>
-        <li class="nav-tem">
-          <router-link :to="{name: 'Home'}">
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{name: 'Home'}">
           <img class="logo" src="./assets/build-a-bot-logo.png"/>
           Build-a-Bot
+          </router-link>
+        </li>
+         <li class="nav-item">
+          <router-link class="nav-link" :to="{name: 'Build'}">
+          Build
           </router-link>
         </li>
       </ul>
     </nav>
   </header>
 <main>
-
 <router-view />
 </main>
 </div>
@@ -22,7 +30,7 @@
 <script>
 
 export default {
-		name: 'App'
+	name: 'App'
   }
 </script>
 <style >
@@ -75,5 +83,12 @@ ul {
 .logo {
   vertical-align: middle;
   height: 30px;
+}
+.nav-link {
+  text-decoration: none;
+  color: inherit;
+}
+.router-link-active {
+  color: white;
 }
 </style>
