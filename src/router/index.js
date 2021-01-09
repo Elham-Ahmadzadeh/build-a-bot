@@ -66,7 +66,11 @@ const routes = [
     path: '/parts/:partType/:id',
     name: 'Parts',
     component: PartInfo,
-    props: true // for vue will pass as props
+    props: true, // for vue will pass as props
+    beforeEnter (to, from, next) { // not to let anyone changes the url
+      const isValidId = Number.isInteger(Number(to.params.id))
+      next(isValidId)
+    }
   }
 ]
 const router = createRouter({

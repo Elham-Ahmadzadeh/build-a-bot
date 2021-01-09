@@ -105,7 +105,16 @@ import PartSelector from './PartSelector.vue'
 import CollapsibleSection from '../shared/CollapsibleSection.vue'
 
 export default {
-	name: 'RobotBuilder',
+  name: 'RobotBuilder',
+  beforeRouteLeave (to, from, next) {
+    if(this.addedToCart){
+      next(true)
+    } else {
+      const response =
+      confirm('You have not added your robot to your cart, are you sure you want to leave?')
+      next(response)
+    }
+  },
 	components: { PartSelector, CollapsibleSection }, //child component we have to list it
 	// explore component lifecycle hooks
 	/* created () {
@@ -129,7 +138,8 @@ export default {
 
 	data () {
 		return {
-			availableParts,
+      availableParts,
+      addedToCart: false,
 			cart: [],
 			selectedRobot: {
 				head: {},
@@ -151,7 +161,8 @@ export default {
 				robot.base.cost
 			this.cart.push(Object.assign({}, robot, { cost }))
 			// we assign the objects
-			console.log('click')
+      console.log('click')
+      this.addedToCart = true
 		}
 
 	}
