@@ -1,7 +1,7 @@
 /*
 * when we navigate to '/' display HomePage component
 TODO we should import new router to main.js
-ToDo CREATE LINKS IN BROWSEPARTS FOR CHILDREN
+TODO CREATE LINKS IN BROWSEPARTS FOR CHILDREN
 ! we use /:partType/:id, it is changable in router
 ? remembr default and sidebar in components corresponds router-views in App.vue
 */
@@ -18,6 +18,7 @@ import RobotTorsos from '@/parts/RobotTorsos.vue'
 import RobotBases from '@/parts/RobotBases.vue'
 import SidebarStandard from '@/sidebars/SidebarStandard.vue'
 import SidebarBuild from '@/sidebars/SidebarBuild.vue'
+import ShoppingCart from '@/cart/ShoppingCart.vue'
 
 const routes = [
   {
@@ -71,7 +72,14 @@ const routes = [
       const isValidId = Number.isInteger(Number(to.params.id))
       next(isValidId)
     }
+  },
+  {
+    name: 'Cart',
+    path: '/cart',
+    component: ShoppingCart
+
   }
+
 ]
 const router = createRouter({
   history: createWebHistory(),

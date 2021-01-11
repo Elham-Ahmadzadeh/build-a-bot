@@ -158,8 +158,9 @@ export default {
 				robot.leftArm.cost +
 				robot.torso.cost +
 				robot.rightArm.cost +
-				robot.base.cost
-			this.cart.push(Object.assign({}, robot, { cost }))
+        robot.base.cost
+        // we gonna call store in here. after we click in the add to cart btn
+      this.$store.commit('addRobotToCart', Object.assign({}, robot, { cost }))
 			// we assign the objects
       console.log('click')
       this.addedToCart = true
